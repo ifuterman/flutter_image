@@ -17,6 +17,7 @@ while getopts ":v:" o; do
 done
 shift $((OPTIND-1))
 
-docker build -t longevity:"${v}" .
+#docker buildx build -t  --platform linux/amd64 " .
+docker buildx build --platform=linux/amd64 -f ./Dockerfile -t longevity:"${v}" .
 docker tag longevity:"${v}" ifuterman/longevity:"${v}"
 docker push ifuterman/longevity:"${v}"

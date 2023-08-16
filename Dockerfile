@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:latest
 LABEL authors="iosiffuterman"
 
 RUN apt-get update
@@ -13,6 +13,7 @@ ENV PATH="/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin:${PAT
 
 #Switching to stable channel
 RUN flutter channel stable
+RUN flutter pub cash repair
 RUN flutter upgrade
 
 #Enabling web platform
